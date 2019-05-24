@@ -19,10 +19,6 @@ import linspace from "./linspace";
 class IntervalAgreementApproach {
   constructor() {
     this.intervals = new IntervalMap();
-
-    /** largest value in the dict after summing */
-    this._largestValue = 0;
-    this.height = 1;
   }
 
   /**
@@ -31,8 +27,6 @@ class IntervalAgreementApproach {
    */
   addInterval(interval) {
     this.intervals.set(interval, 1);
-    this._largestValue = Math.max(...this.intervals.singletonKeys);
-    this.height = this._largestValue / this.intervals.size;
   }
 
   /**
@@ -47,7 +41,12 @@ class IntervalAgreementApproach {
    * Return the centroid x-value of the fuzzy set.
    */
   get centroid() {
-    const { top, bottom } = linspace([0, 10], 101).reduce(
+    const smallestValue = Math.min(...this.intervals.singletonKeys);
+    const largestValue = Math.max(...this.intervals.singletonKeys);
+    const { top, bottom } = linspace(
+      [smallestValue, largestValue],
+      (largestValue - smallestValue) * 10 + 1
+    ).reduce(
       (a, x) => {
         const mu = this.membership(x);
         return {

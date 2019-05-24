@@ -11,3 +11,15 @@ test("matches `main.py`", () => {
   expect(fs.membership(7)).toEqual(0.5);
   expect(parseFloat(fs.centroid.toFixed(2))).toEqual(4.57);
 });
+
+test("works with values exclusively outside the range 0 - 10", () => {
+  const intervals = [[60, 90], [50, 90], [40, 90], [80, 90]];
+
+  const fs = new IntervalAgreementApproach();
+  for (const d of intervals) fs.addInterval(d);
+
+  expect(fs.membership(1)).toEqual(0);
+  expect(fs.membership(62)).toEqual(0.75);
+  expect(fs.membership(42)).toEqual(0.25);
+  expect(parseFloat(fs.centroid)).not.toBeNaN();
+})

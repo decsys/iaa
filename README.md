@@ -26,6 +26,10 @@ This is the original implementation.
 2. Modify `main.py` as desired
 3. `py main.py`
 
+Note that currently centroid calculation is hardcoded for values between 0 and 10.
+- Values outside this range will not be factored into the centroid calculation
+- If ALL values are outside this range, centroid result will be `nan`
+
 ## ES Modules (JavaScript)
 
 This implementation was developed for use in the DECSYS Project, in which client-side React Components implement the Interval Value Ellipse Scale, and use this code to provide statistical analysis of the results.
