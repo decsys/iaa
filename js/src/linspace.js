@@ -25,7 +25,11 @@ export const linspace = (interval, num = 50, endpoint = true) => {
     throw new TypeError("Interval must be an Array with 2 elements.");
   if (interval.some(x => isNaN(parseFloat(x))))
     throw new TypeError("Both end points must be numbers.");
-  if (num <= 0) throw new TypeError("Num must be a positive integer.");
+  if (typeof num !== "number" || num <= 0)
+    throw new TypeError("Num must be a positive integer.");
+
+  //make num an int if it's a float, err on the side of larger
+  num = Math.ceil(num);
 
   // some shortcuts
   const [start, stop] = interval;

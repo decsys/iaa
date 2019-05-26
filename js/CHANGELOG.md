@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## [Unreleased] -->
 
+## 1.0.0-beta.3 - 2019-05-26
+
+### Fixed
+
+- `linspace()` now rounds the number of intervals up to the next largest integer, if it was passed a float
+
 ## 1.0.0-beta.2 - 2019-05-24
 
 ### Added

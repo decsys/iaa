@@ -12,6 +12,19 @@ test("matches `main.py`", () => {
   expect(parseFloat(fs.centroid.toFixed(2))).toEqual(4.57);
 });
 
+test("works with floats at both extremes", () => {
+  const intervals = [
+    [29, 51.067613404],
+    [20.640571195, 40]
+  ];
+
+  const fs = new IntervalAgreementApproach();
+  for (const d of intervals) fs.addInterval(d);
+
+  expect(fs.membership(1)).not.toBeNaN();
+  expect(parseFloat(fs.centroid)).not.toBeNaN();
+});
+
 test("works with values exclusively outside the range 0 - 10", () => {
   const intervals = [[60, 90], [50, 90], [40, 90], [80, 90]];
 
@@ -22,4 +35,4 @@ test("works with values exclusively outside the range 0 - 10", () => {
   expect(fs.membership(62)).toEqual(0.75);
   expect(fs.membership(42)).toEqual(0.25);
   expect(parseFloat(fs.centroid)).not.toBeNaN();
-})
+});
