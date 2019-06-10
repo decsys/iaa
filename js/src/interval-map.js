@@ -38,7 +38,7 @@ class IntervalMap {
   set(key, value) {
     if (!(key instanceof Array) || key.length !== 2)
       throw new TypeError("The key must be an Array with 2 elements.");
-    if (key.some(x => !parseFloat(x)))
+    if (key.some(x => isNaN(parseFloat(x))))
       throw new TypeError("Both end points must be numbers.");
     this._map.set(key, value);
   }
