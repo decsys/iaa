@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## [Unreleased] -->
 
+## 1.0.0-beta.5 - 2019-06-10
+
+- fixed the number check for the value `0`. `0` being falsey previously led to this failing.
+
 ## 1.0.0-beta.3 - 2019-05-26
 
 ### Fixed
