@@ -65,7 +65,7 @@ parseFloat(fs.centroid.toFixed(2)); // 4.57
 This software is primarily licensed under the **GNU Affero General Public License v3.0 only** (`AGPL-3.0-only`)
 
     Type-1 Interval Agreement Approach
-    Copyright (C) 2015 - 2019
+    Copyright (C) 2015 - 2019 Christian Wagner, LUCID (Lab for Uncertainty in Data and Decision Making)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
