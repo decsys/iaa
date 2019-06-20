@@ -12,8 +12,8 @@
   "scripts": {
     "build": "rollup -c",
     "test": "jest",
-    "prepublishOnly": "copyfiles ../LICENSE.md ../README.md js",
-    "postpublish": "rimraf ./LICENSE.md && rimraf ./README.md"
+    "prepublishOnly": "copyfiles ../LICENSE.md js",
+    "postpublish": "rimraf ./LICENSE.md"
   },
   "babel": {
     "presets": [
