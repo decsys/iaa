@@ -1,6 +1,6 @@
 {
   "name": "@decsys/iaa",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0",
   "description": "For applying the type-1 Interval Agreement Approach",
   "module": "dist/decsys.iaa.esm.js",
   "files": [
@@ -12,8 +12,8 @@
   "scripts": {
     "build": "rollup -c",
     "test": "jest",
-    "prepublishOnly": "copyfiles ../LICENSE.md ../README.md js",
-    "postpublish": "rimraf ./LICENSE.md && rimraf ./README.md"
+    "prepublishOnly": "copyfiles ../LICENSE.md js",
+    "postpublish": "rimraf ./LICENSE.md"
   },
   "babel": {
     "presets": [
@@ -33,13 +33,13 @@
   "author": "Jon Couldridge <jon@jon.gg>",
   "license": "AGPL-3.0-only",
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "babel-jest": "^24.8.0",
     "copyfiles": "^2.1.0",
     "jest": "^24.8.0",
     "rimraf": "^2.6.3",
-    "rollup": "^1.12.3",
+    "rollup": "^1.15.6",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-terser": "^4.0.4"
   }

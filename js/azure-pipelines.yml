@@ -1,0 +1,37 @@
+trigger:
+  - master
+stages:
+  - stage: Build
+    jobs:
+      - job: build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - script: |
+              npm ci
+              npm run build
+            workingDirectory: js
+          - upload: js/dist
+  - stage: Release
+    condition: "and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))"
+    jobs:
+      - deployment: npm
+        environment: github
+        pool:
+          vmImage: ubuntu-latest
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                - script: mkdir $(System.DefaultWorkingDirectory)/js/dist
+                - bash: >-
+                    cp -r $(Pipeline.Workspace)/drop/*
+                    $(System.DefaultWorkingDirectory)/js/dist
+                - script: npm ci
+                  workingDirectory: js
+                - task: Npm@1
+                  inputs:
+                    command: publish
+                    workingDir: js
+                    publishEndpoint: npmjs

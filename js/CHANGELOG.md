@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## [Unreleased] -->
 
+## 1.0.0 - 2019-06-20
+
+### Added
+
+- Azure Pipelines CI/CD config
+
+### Changed
+
+- Various documentation changes
+
 ## 1.0.0-beta.5 - 2019-06-10
+
+### Fixed
 
 - fixed the number check for the value `0`. `0` being falsey previously led to this failing.
 
