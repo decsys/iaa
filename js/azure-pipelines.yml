@@ -1,11 +1,13 @@
 trigger:
-- master
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: |
-    npm ci
-    npm run build
-  displayName: 'npm install and build'
+  - master
+stages:
+  - stage: Build
+    jobs:
+      - job: build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - script: |
+              npm ci
+              npm run build
+            workingDirectory: js
