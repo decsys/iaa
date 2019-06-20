@@ -13,7 +13,7 @@ stages:
             workingDirectory: js
           - upload: js/dist
   - stage: Release
-    #condition: "and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))"
+    condition: "and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))"
     jobs:
       - deployment: npm
         environment: github

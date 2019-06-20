@@ -1,4 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/decsys/iaa.svg)
+[![Build Status](https://dev.azure.com/UniversityOfNottingham/DECSYS/_apis/build/status/decsys.iaa%20(npm)?branchName=master)](https://dev.azure.com/UniversityOfNottingham/DECSYS/_build/latest?definitionId=178&branchName=master)
 [![npm (scoped with tag)](https://img.shields.io/npm/v/@decsys/iaa/latest.svg)](https://www.npmjs.com/package/@decsys/iaa)
 
 # Type-1 Interval Agreement Approach
