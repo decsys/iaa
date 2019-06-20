@@ -6,10 +6,10 @@ Details of the interval agreement approach are within [From Interval-Valued Data
 
 | | From Interval-Valued Data to General Type-2 Fuzzy Sets |
 |-|-|
-| **Authors** | C. Wagner, S. Miller, J. M. Garibaldi, D. T. Anderson and T. C. Havens |
-| **Published in** | IEEE Transactions on Fuzzy Systems, vol. 23, no. 2 April 2015. |
-| **Pages** | 248 - 269 |
-| **DOI** | [`10.1109/TFUZZ.2014.2310734`](https://doi.org/10.1109/TFUZZ.2014.2310734) |
+| **Authors**| C. Wagner, S. Miller, J. M. Garibaldi, D. T. Anderson and T. C. Havens |
+| **Published in**| IEEE Transactions on Fuzzy Systems, vol. 23, no. 2 April 2015. |
+| **Pages**| 248 - 269 |
+| **DOI**| [`10.1109/TFUZZ.2014.2310734`](https://doi.org/10.1109/TFUZZ.2014.2310734) |
 
 # Implementations
 
