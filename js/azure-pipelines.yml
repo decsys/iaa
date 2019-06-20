@@ -29,6 +29,7 @@ stages:
                     cp -r $(Pipeline.Workspace)/drop/*
                     $(System.DefaultWorkingDirectory)/js/dist
                 - script: npm ci --only=dev
+                  workingDirectory: js
                 - task: Npm@1
                   inputs:
                     command: publish
