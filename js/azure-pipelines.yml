@@ -24,7 +24,7 @@ stages:
             deploy:
               steps:
                 - bash: >-
-                    cp -r $(Pipeline.Workspace)/drop/**/*
+                    cp -r $(Pipeline.Workspace)/drop/*
                     $(System.DefaultWorkingDirectory)
                 - task: Npm@1
                   inputs:
