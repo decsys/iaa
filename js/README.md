@@ -1,5 +1,5 @@
 ![GitHub](https://img.shields.io/github/license/decsys/iaa.svg)
-![npm (scoped with tag)](https://img.shields.io/npm/v/@decsys/iaa/latest.svg)
+[![npm (scoped with tag)](https://img.shields.io/npm/v/@decsys/iaa/latest.svg)](https://www.npmjs.com/package/@decsys/iaa)
 
 # Type-1 Interval Agreement Approach
 
