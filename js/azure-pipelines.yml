@@ -31,5 +31,5 @@ stages:
                 - task: Npm@1
                   inputs:
                     command: publish
-                    workingDirectory: js
+                    workingDir: js
                     publishEndpoint: npmjs
