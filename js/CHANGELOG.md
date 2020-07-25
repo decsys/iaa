@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- ## [Unreleased] -->
 
+## 1.0.2 - 2020-07-25
+
+### Changed
+
+- Security updates from `npm audit fix` and dependabot.
+
 ## 1.0.0 - 2019-06-20
 
 ### Added
