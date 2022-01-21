@@ -58,6 +58,39 @@ class IntervalAgreementApproach {
     );
     return top / bottom;
   }
+
+  /**
+   * Calculating mean of maxima is similar to centroid in that it will need to 
+   * sample linearly spaced values across a range (or ranges!), but then it will average all sampled values
+   */
+  get mean_of_maxima() {
+    const smallestValue = Math.min(...this.intervals.singletonKeys);
+    const largestValue = Math.max(...this.intervals.singletonKeys);
+    const values = linspace(
+      [smallestValue, largestValue],
+      (largestValue - smallestValue) * 10 + 1
+    )
+    const sum = values.reduce((a, b) => a + b, 0)
+    mean = sum/values.length
+    
+    return mean;
+  }
+
+  /**
+   * sum all minimum values and all maximum values then divide 
+   * by the count of all summed values (i.e. sum of the counts of min and max)
+   */
+  get mean_of_midpoints() {
+    const minValues = this.intervals.singletonKeys.filter(val=> val == Math.min(...this.intervals.singletonKeys))
+    const maxValues = this.intervals.singletonKeys.filter(val=> val == Math.max(...this.intervals.singletonKeys))
+
+    const divideNum = minValues.length+maxValues.length
+
+    const minSum = minValues.reduce((a, b) => a + b, 0)
+    const maxSum = maxValues.reduce((a, b) => a + b, 0)
+    
+    return (minSum+maxSum)/divideNum;
+  }
 }
 
 export default IntervalAgreementApproach;
