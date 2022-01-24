@@ -43,3 +43,22 @@ test("works with endpoint only values", () => {
   expect(fs.membership(1)).not.toBeNaN();
   expect(parseFloat(fs.centroid)).not.toBeNaN();
 });
+
+
+test("Mean of maxima works", () => {
+  const intervals = [[1,5], [1,3], [2,5]];
+
+  const fs = new IntervalAgreementApproach();
+  for (const d of intervals) fs.addInterval(d);
+
+  expect(parseFloat(fs.mean_of_maxima)).toEqual(4.33);
+  
+});
+test("Mean of midpoints work", () => {
+  const intervals = [[1,5], [1,3], [2,5]];
+
+  const fs = new IntervalAgreementApproach();
+  for (const d of intervals) fs.addInterval(d);
+
+  expect(parseFloat(fs.mean_of_midpoints).toFixed(2)).toEqual("2.83")
+});

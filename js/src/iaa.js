@@ -71,7 +71,7 @@ class IntervalAgreementApproach {
       (largestValue - smallestValue) * 10 + 1
     )
     const sum = values.reduce((a, b) => a + b, 0)
-    mean = sum/values.length
+    const mean = sum/values.length
     
     return mean;
   }
@@ -85,10 +85,10 @@ class IntervalAgreementApproach {
     const minValues = []
     const maxValues = []
     intervalSet.map(item=>{
-      minValues.push(...item.filter(val=> val == Math.min(item)))
+      minValues.push(...(item.filter(val=> val == Math.min(...item))))
     })
     intervalSet.map(item=>{
-      maxValues.push(...item.filter(val=> val == Math.max(item)))
+      maxValues.push(...(item.filter(val=> val == Math.max(...item))))
     })
     
     const divideNum = minValues.length+maxValues.length
