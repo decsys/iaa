@@ -81,9 +81,16 @@ class IntervalAgreementApproach {
    * by the count of all summed values (i.e. sum of the counts of min and max)
    */
   get mean_of_midpoints() {
-    const minValues = this.intervals.singletonKeys.filter(val=> val == Math.min(...this.intervals.singletonKeys))
-    const maxValues = this.intervals.singletonKeys.filter(val=> val == Math.max(...this.intervals.singletonKeys))
-
+    const intervalSet = [...this.intervals.intervalSet]
+    const minValues = []
+    const maxValues = []
+    intervalSet.map(item=>{
+      minValues.push(...item.filter(val=> val == Math.min(item)))
+    })
+    intervalSet.map(item=>{
+      maxValues.push(...item.filter(val=> val == Math.max(item)))
+    })
+    
     const divideNum = minValues.length+maxValues.length
 
     const minSum = minValues.reduce((a, b) => a + b, 0)
