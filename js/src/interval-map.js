@@ -67,6 +67,9 @@ class IntervalMap {
   get singletonKeys() {
     return [...new Set([...this._map.keys()].reduce((a, v) => [...a, ...v]))];
   }
+  get intervalSet() {
+    return [...this._map.keys()];
+  }
 
   get size() {
     return this._map.size;
