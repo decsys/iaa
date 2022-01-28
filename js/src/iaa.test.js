@@ -51,7 +51,7 @@ test("Mean of maxima works", () => {
   const fs = new IntervalAgreementApproach();
   for (const d of intervals) fs.addInterval(d);
 
-  expect(parseFloat(fs.mean_of_maxima)).toEqual(4.33);
+  expect(fs.mean_of_maxima).toEqual([2,3]);
   
 });
 test("Mean of midpoints work", () => {

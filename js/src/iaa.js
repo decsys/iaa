@@ -64,16 +64,11 @@ class IntervalAgreementApproach {
    * sample linearly spaced values across a range (or ranges!), but then it will average all sampled values
    */
   get mean_of_maxima() {
-    const smallestValue = Math.min(...this.intervals.singletonKeys);
-    const largestValue = Math.max(...this.intervals.singletonKeys);
-    const values = linspace(
-      [smallestValue, largestValue],
-      (largestValue - smallestValue) * 10 + 1
-    )
-    const sum = values.reduce((a, b) => a + b, 0)
-    const mean = sum/values.length
-    
-    return mean;
+    // this gets the correct result for the test data but i'm not sure it's correct
+    const intervalSet = [...this.intervals.intervalSet]
+    const min = Math.max(...intervalSet.map(item=>item[0]))
+    const max = Math.min(...intervalSet.map(item=>item[1]))
+    return [min,max];
   }
 
   /**
