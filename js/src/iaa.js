@@ -64,11 +64,68 @@ class IntervalAgreementApproach {
    * sample linearly spaced values across a range (or ranges!), but then it will average all sampled values
    */
   get mean_of_maxima() {
-    // this gets the correct result for the test data but i'm not sure it's correct
+    const smallestValue = Math.min(...this.intervals.singletonKeys);
+    const largestValue = Math.max(...this.intervals.singletonKeys);
     const intervalSet = [...this.intervals.intervalSet]
-    const min = Math.max(...intervalSet.map(item=>item[0]))
-    const max = Math.min(...intervalSet.map(item=>item[1]))
-    return [min,max];
+    const sample = linspace([smallestValue, largestValue], ((largestValue - smallestValue) / 0.01) + 1)
+
+    const sample_item_count_object = Object.assign(
+      {},
+      ...sample.map(item => {
+        const el = {}
+        el[item] = intervalSet.filter(element => item >= element[0] && item <= element[1]).length
+        return el
+      })
+    )
+
+    let highest_agreement_values = []
+    Object.keys(sample_item_count_object).map(item => {
+      if (sample_item_count_object[item] == Math.max(...Object.values(sample_item_count_object))) {
+        highest_agreement_values.push(item)
+      }
+    })
+
+    highest_agreement_values = highest_agreement_values.sort(function (a, b) { return parseFloat(a) - parseFloat(b) })
+
+    // determine intervals of highest agreement from list of values with highest agreement
+    const finalArr = []
+    let skip = []
+    highest_agreement_values.map((item, index) => {
+      if (skip.includes(item)) {
+        return
+      }
+      else if (item == largestValue) {
+        finalArr.push([item, item])
+        return
+      }
+      else {
+        let start = item
+        let currentNum = item
+        let currentIndex = index
+
+        const startIndex = sample.findIndex((qwer) => qwer == item)
+
+        for (let i = startIndex; i < sample.length; i++) {
+          if (currentIndex == (highest_agreement_values.length - 1)) {
+            finalArr.push([start, currentNum])
+            break
+          }
+          else if (sample[i + 1] == highest_agreement_values[currentIndex + 1]) {
+            skip.push(highest_agreement_values[currentIndex + 1])
+            currentNum = highest_agreement_values[currentIndex + 1]
+            currentIndex++
+          }
+          else {
+            finalArr.push([start, currentNum])
+            break
+          }
+        }
+      }
+    })
+
+    return finalArr.flat().reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / finalArr.flat().length;
+    //return highest_agreement_values.reduce((a, b) => parseFloat(a) + parseFloat(b), 0) / highest_agreement_values.length;
+
   }
 
   /**
@@ -77,21 +134,8 @@ class IntervalAgreementApproach {
    */
   get mean_of_midpoints() {
     const intervalSet = [...this.intervals.intervalSet]
-    const minValues = []
-    const maxValues = []
-    intervalSet.map(item=>{
-      minValues.push(...(item.filter(val=> val == Math.min(...item))))
-    })
-    intervalSet.map(item=>{
-      maxValues.push(...(item.filter(val=> val == Math.max(...item))))
-    })
-    
-    const divideNum = minValues.length+maxValues.length
-
-    const minSum = minValues.reduce((a, b) => a + b, 0)
-    const maxSum = maxValues.reduce((a, b) => a + b, 0)
-    
-    return (minSum+maxSum)/divideNum;
+    const midpoints = intervalSet.map(item => (item[0] + item[1]) / 2)
+    return midpoints.reduce((a, b) => a + b, 0) / midpoints.length
   }
 }
 

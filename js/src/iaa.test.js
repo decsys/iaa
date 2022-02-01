@@ -47,11 +47,32 @@ test("works with endpoint only values", () => {
 
 test("Mean of maxima works", () => {
   const intervals = [[1,5], [1,3], [2,5]];
+  const intervals2 = [[5,10], [2.5,5.5], [3,5]];
+  const intervals3 = [[4,10], [3,6], [5,7]];
+  const intervals4 = [[3.5,10], [2.5,6], [3,4]];
+  const intervals5 = [[1,5], [1,3], [2,5],[6,30], [6,18], [12,30]];
 
   const fs = new IntervalAgreementApproach();
   for (const d of intervals) fs.addInterval(d);
 
-  expect(fs.mean_of_maxima).toEqual([2,3]);
+  const fs2 = new IntervalAgreementApproach();
+  for (const d2 of intervals2) fs2.addInterval(d2);
+
+  const fs3 = new IntervalAgreementApproach();
+  for (const d3 of intervals3) fs3.addInterval(d3);
+
+  const fs4 = new IntervalAgreementApproach();
+  for (const d4 of intervals4) fs4.addInterval(d4);
+
+  const fs5 = new IntervalAgreementApproach();
+  for (const d5 of intervals5) fs5.addInterval(d5);
+
+  expect(fs.mean_of_maxima).toEqual(2.5);
+  expect(fs2.mean_of_maxima).toEqual(5);
+  expect(fs3.mean_of_maxima).toEqual(5.5);
+  expect(fs4.mean_of_maxima).toEqual(3.75);
+  expect(fs5.mean_of_maxima).toEqual(8.75);
+  
   
 });
 test("Mean of midpoints work", () => {
